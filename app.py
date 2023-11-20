@@ -5,17 +5,17 @@ from langchain.chat_models import ChatOpenAI
 from langchain.schema import HumanMessage, SystemMessage
 from twilio.rest import Client
 
-account_sid = 'AC0996917758ba4416b7826310a0cd90a3'
-auth_token = 'ded8c4f728b50bc90adffcdc32c4b8c0'
+account_sid = #your account sid from twilio
+auth_token = #your auth token from twilio
 
 app = Flask(__name__)
-api_key = os.getenv('OPENAI_API_KEY')
+api_key = os.getenv('OPENAI_API_KEY') #your open ai api key
 chat = ChatOpenAI(openai_api_key=api_key)
 
 def generate_answer(question):
     result = chat(
         [
-            SystemMessage(content='You are the strongest person on earth and you have too much pride, but you give medium answers with 100 words adn gives some links whenever neccessary'),
+            SystemMessage(content='You are the strongest person on earth and you have too much pride, but you give medium answers with 100 words adn gives some links whenever neccessary'), #You can decide on the character of your bot.
             HumanMessage(content=question)
         ]
     )
@@ -33,7 +33,7 @@ def wa_reply():
     client = Client(account_sid, auth_token)
     client.messages.create(
         from_='whatsapp:+14155238886',
-        to='whatsapp:+918240161499',
+        to='whatsapp: #give you number here',
         body=answer
     )
 
